@@ -101,21 +101,21 @@ public class EntityBlueDiamond extends EntityGem {
         compound.setBoolean("hooded", this.isHooded());
         compound.setInteger("lastSpecialAttack", this.lastSpecialAttack);
         compound.setInteger("lastRecruitAttack", this.lastRecruitAttack);
-        this.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+        this.setServitude(EntityGem.SERVE_NONE);
 	}
     public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
         this.setHooded(compound.getBoolean("hooded"));
         this.lastSpecialAttack = compound.getInteger("lastSpecialAttack");
         this.lastRecruitAttack = compound.getInteger("lastRecruitAttack");
-        this.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+        this.setServitude(EntityGem.SERVE_NONE);
     }
     public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, @Nullable IEntityLivingData livingdata) {
     	//KAGIC.instance.chatInfoMessage("Blue Diamond onInitialSpawn called");
-    	this.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+    	this.setServitude(EntityGem.SERVE_NONE);
     	EntityPearl pearl = new EntityPearl(this.world);
 		pearl.setPosition(this.posX, this.posY, this.posZ);
-		pearl.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+		pearl.setServitude(EntityGem.SERVE_NONE);
 		//pearl.setGemPlacement(GemPlacements.CHEST.id);
 		pearl.setSpecialSkin(1);
 		this.world.spawnEntity(pearl);
@@ -149,7 +149,7 @@ public class EntityBlueDiamond extends EntityGem {
 	    	if (this.hurtResistantTime > 0 && this.lastRecruitAttack < 200 && this.lastRecruitAttack % 10 == 0 && this.rand.nextBoolean()) {
 	    		EntityAmethyst amethyst = new EntityAmethyst(this.world);
 				amethyst.setPosition(this.posX, this.posY, this.posZ);
-				amethyst.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+				amethyst.setServitude(EntityGem.SERVE_NONE);
 				amethyst.setRevengeTarget(this.getAttackTarget());
 				amethyst.onInitialSpawn(this.world.getDifficultyForLocation(this.getPosition()), null);
 				this.world.spawnEntity(amethyst);
@@ -180,7 +180,7 @@ public class EntityBlueDiamond extends EntityGem {
     	if (source.getTrueSource() instanceof EntityLivingBase && this.getHealth() / 20 < amount && this.rand.nextInt(4) == 0 && !this.world.isRemote) {
 			EntityAmethyst amethyst = new EntityAmethyst(this.world);
 			amethyst.setPosition(this.posX, this.posY, this.posZ);
-			amethyst.setServitude(EntityGem.SERVE_BLUE_DIAMOND);
+			amethyst.setServitude(EntityGem.SERVE_NONE);
 			amethyst.setRevengeTarget((EntityLivingBase) source.getTrueSource());
 			amethyst.onInitialSpawn(this.world.getDifficultyForLocation(this.getPosition()), null);
 			this.world.spawnEntity(amethyst);
